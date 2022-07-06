@@ -13,6 +13,9 @@ module.exports = {
   devServer: {
     static: path.resolve(__dirname, "dist"),
   },
+  resolve: {
+    extensions: [".ts", ".tsx", ".js", "sass", "css", "html", "scss"],
+  },
   module: {
     rules: [
       {
@@ -24,6 +27,11 @@ module.exports = {
         use: "ts-loader",
         exclude: /node_modules/,
       },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
+      },
+      { test: /\.tsx?$/, loader: "ts-loader" },
     ],
   },
   plugins: [
