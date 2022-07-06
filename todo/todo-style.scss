@@ -1,0 +1,172 @@
+@font-face {
+  font-family: 'lato-regular', sans-serif;
+  src: url("fonts/Lato-Regular.ttf");
+}
+
+@font-face {
+  font-family: 'lato-bold', sans-serif;
+  src: url("fonts/Lato-Bold.ttf");
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+body{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.header {
+  width: 100%;
+  background-color: #F2F2F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 26px 0 26px 0;
+  margin-bottom: 52px;
+
+  .ellipse{
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background-color: #D9D9D9;
+  }
+  &__img {
+  }
+  &__text {
+    font-family: lato-regular, sans-serif;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
+
+.body {
+
+  .text__header {
+    font-family: 'lato-bold', sans-serif;
+    font-weight: 700;
+    font-size: 31px;
+    line-height: 37px;
+    margin-bottom: 32px;
+  }
+  &__inputs{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+
+  }
+  &__input {
+    width: 499px;
+    height: 44px;
+    background-color: #F3F3F3;
+    padding-left: 27px;
+    border-radius: 8px;
+    font-family: "lato-regular", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+
+    &-button {
+      width: 100px;
+      height: 44px;
+      font-family: "lato-regular", sans-serif;
+      border-radius: 8px;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 22px;
+      cursor: pointer;
+    }
+  }
+  .todo {
+
+    &__header {
+      display: flex;
+      gap: 450px;
+      margin-bottom: 26px;
+
+      .title {
+        font-family: "lato-regular", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+        margin-left: 50px;
+      }
+      .action {
+        font-family: "lato-regular", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+    .tasks {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .task {
+        display: flex;
+        align-items: center;
+        &__checkbox{
+          width: 28px;
+          height: 28px;
+          border: 2px solid #000000;
+          border-radius: 8px;
+          cursor: pointer;
+        }
+        .input__task--text {
+          font-family: "lato-regular", sans-serif;
+          font-weight: 400;
+          font-size: 18px;
+          line-height: 22px;
+          width: 500px;
+          margin-left: 16px;
+          height: 25px;
+        }
+
+        &__img {
+          display: flex;
+          gap: 12px;
+          margin-left: 20px;
+          &--pen {
+            cursor: pointer;
+          }
+          &--pannier {
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
