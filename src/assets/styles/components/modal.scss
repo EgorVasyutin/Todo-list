@@ -1,0 +1,104 @@
+.modal {
+  &-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgb(0, 0, 0, 0);
+    transition: backgraund 0.2s ease-in;
+    .modal-window {
+      width: 500px;
+      border-radius: 5px;
+      background-color: #fff;
+      height: 150px;
+      margin: 0 auto;
+      transform: translateY(-200px);
+      transition: transform 0.2s ease-in;
+
+      &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+        & h2 {
+          font-size: 24px;
+          margin: 0;
+        }
+        .modal__close {
+          color: black;
+          cursor: pointer;
+        }
+      }
+      &__body {
+        .modal__input {
+          width: 420px;
+          height: 44px;
+          font-size: 16px;
+          line-height: 19px;
+          font-weight: 400;
+          margin-left: 24px;
+          padding-left: 16px;
+        }
+
+        .modal__text {
+          font-size: 14px;
+          padding-left: 24px;
+          margin-bottom: 20px;
+        }
+      }
+      &__footer {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+        .modal__button {
+          font-size: 16px;
+          color: black;
+          background-color: #808080;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+        .modal__button--no {
+          margin-right: 20px;
+          padding: 10px 20px 10px 20px;
+        }
+        .modal__button--yes {
+          padding: 10px 16px 10px 16px;
+        }
+      }
+    }
+  }
+}
+.modal.open .modal-overlay,
+.modal.open .modal-window {
+  z-index: 1000;
+  opacity: 1;
+}
+
+.modal.hide .modal-overlay,
+.modal.hide .modal-window {
+  z-index: 1000;
+  opacity: 1;
+}
+
+.modal.open .modal-window {
+  transform: translateY(200px);
+}
+
+.modal-window,
+.modal-overlay {
+  z-index: -1;
+  opacity: 0;
+}
+
+.modal.hide .modal-window {
+  transform: translateY(-200px);
+}
+
+.modal.hide .modal-overlay {
+  background: rgb(0, 0, 0, 0);
+}
+.modal.open .modal-overlay {
+  background: rgb(0, 0, 0, 0.5);
+}

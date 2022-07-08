@@ -1,14 +1,15 @@
+@import "components/modal.scss";
 @import "fonts.css";
-@import "componens/header";
-@import "componens/todo";
+@import "components/header.scss";
+@import "components/todo.scss";
 
-*{
+* {
   margin: 0;
   padding: 0;
   border: none;
 }
 
-body{
+body {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -16,23 +17,22 @@ body{
 
 .body {
   .text__header {
-    font-family: 'lato-bold', sans-serif;
+    font-family: "lato-bold", sans-serif;
     font-weight: 700;
     font-size: 31px;
     line-height: 37px;
     margin-bottom: 32px;
   }
-  &__inputs{
+  &__inputs {
     display: flex;
     align-items: center;
     gap: 16px;
     margin-bottom: 32px;
-
   }
   &__input {
     width: 499px;
     height: 44px;
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
     padding-left: 27px;
     border-radius: 8px;
     font-family: "lato-regular", sans-serif;
@@ -52,28 +52,3 @@ body{
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
