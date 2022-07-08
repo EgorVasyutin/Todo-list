@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "fonts.scss";
 @import "components/modal.scss";
-@import "fonts.css";
 @import "components/header.scss";
 @import "components/todo.scss";
 
