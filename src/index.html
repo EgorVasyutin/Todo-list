@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="./assets/styles/style.css" />
   </head>
   <body>
     <header class="header">
       <div class="ellipse">
-        <img src="assets/img/person-icon.svg" class="header__img" />
+        <img src="assets/img/person-icon.svg" class="header__img"  alt="user"/>
       </div>
       <div class="header__text">Egor Vasyutin</div>
     </header>
+
     <div class="body">
-      <div class="text__header bg-midnight">Мои задачи</div>
+      <div class="text__header">Мои задачи 2</div>
       <div class="body__inputs">
         <label>
           <input
@@ -28,29 +28,8 @@
           <div class="title">Название</div>
           <div class="action">Действие</div>
         </div>
-        <div class="tasks">
-          <div class="task">
-            <label class="task__label">
-              <input type="checkbox" class="task__checkbox" />
-              <span class="checkbox"></span>
-              <span class="task__text">asdasds</span>
-            </label>
-
-            <div class="task__img">
-              <img src="assets/img/pen.svg" alt="pen" class="task__img--pen" />
-              <img
-                src="assets/img/pannier.svg"
-                alt="pannier"
-                class="task__img--pannier"
-              />
-            </div>
-          </div>
-        </div>
+        <div id="tasks" class="tasks"></div>
       </div>
     </div>
-    <script src="index.ts"></script>
-    <script src="base.js"></script>
-    <script src="plugins/modal.ts"></script>
-    <script src="main.ts"></script>
   </body>
 </html>
