@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "fonts.scss";
-@import "components/modal.scss";
-@import "components/header.scss";
-@import "components/todo.scss";
+@import 'fonts.scss';
+@import 'components/modal.scss';
+@import 'components/header.scss';
+@import 'components/todo.scss';
 
 * {
   margin: 0;
@@ -21,7 +21,7 @@ body {
 
 .body {
   .text__header {
-    font-family: "lato-bold", sans-serif;
+    font-family: 'lato-bold', sans-serif;
     font-weight: 700;
     font-size: 31px;
     line-height: 37px;
@@ -39,7 +39,7 @@ body {
     background-color: #f3f3f3;
     padding-left: 27px;
     border-radius: 8px;
-    font-family: "lato-regular", sans-serif;
+    font-family: 'lato-regular', sans-serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
@@ -47,7 +47,7 @@ body {
     &-button {
       width: 100px;
       height: 44px;
-      font-family: "lato-regular", sans-serif;
+      font-family: 'lato-regular', sans-serif;
       border-radius: 8px;
       font-weight: 400;
       font-size: 18px;

@@ -4,6 +4,7 @@ export type ModalOptions = {
   primaryButtonText: string
   secondaryButtonText?: string
 }
+import { buttonListener } from '../modules/todos'
 
 export class Dialog {
   // fields
@@ -31,7 +32,7 @@ export class Dialog {
             <span class="modal__close">&times;</span>   
           </div>
           <div class="modal-window__body">
-            ${options.bodyHTML}
+               ${options.bodyHTML}
           </div>
           <div class="modal-window__footer">
             <button class="modal__button modal__button--yes">${options.primaryButtonText}</button>
@@ -52,13 +53,18 @@ export class Dialog {
 
     const buttonPrimary: HTMLButtonElement = this.element.querySelector('.modal__button--yes')
     buttonPrimary.addEventListener('click', () => {
-      console.log('primary clicked')
-
+      if (document.querySelector('.modal__text').innerHTML === 'Редактировать задачу') {
+        buttonListener.Edit()
+      } else {
+        buttonListener.Delete()
+      }
       this.close()
     })
 
     const buttonSecondary: HTMLButtonElement = this.element.querySelector('.modal__button--no')
-    buttonSecondary.addEventListener('click', () => console.log('secondary clicked'))
+    buttonSecondary.addEventListener('click', () => {
+      this.close()
+    })
   }
 
   open(): void {
