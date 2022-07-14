@@ -1,19 +1,18 @@
 .todo {
-
   &__header {
     display: flex;
     gap: 450px;
     margin-bottom: 26px;
 
     .title {
-      font-family: "lato-regular", sans-serif;
+      font-family: 'lato-regular', sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
       margin-left: 50px;
     }
     .action {
-      font-family: "lato-regular", sans-serif;
+      font-family: 'lato-regular', sans-serif;
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
@@ -26,38 +25,42 @@
     .task {
       display: flex;
       align-items: center;
-      &__label{
+      margin-bottom: 15px;
+      &__label {
         display: flex;
         align-items: center;
         cursor: pointer;
         padding-left: 2.5em;
       }
-      &__checkbox{
+      &__checkbox {
         appearance: none;
         position: absolute;
       }
-      .checkbox{
+      .checkbox {
         display: block;
         cursor: pointer;
         width: 28px;
         height: 28px;
-        border: 1px solid #D1D5DB;
+        border: 1px solid #d1d5db;
         border-radius: 8px;
         position: absolute;
         margin-left: -2.5em;
       }
-      &__checkbox:checked + .checkbox{
-        background-color: #4F46E5;
-        background-image: url("img/check.svg");
+      &__checkbox:checked + .checkbox {
+        background-color: #4f46e5;
+        background-image: url('../img/check.svg');
+        background-repeat: no-repeat;
+        background-position: center;
       }
-      &__checkbox:focus + .checkbox{
-        border: 2px solid #4F46E5
+      &__checkbox:focus + .checkbox {
+        border: 2px solid #4f46e5;
       }
       .task__text {
-        font-family: "lato-regular", sans-serif;
+        font-family: 'lato-regular', sans-serif;
         font-weight: 400;
         font-size: 18px;
         line-height: 22px;
+        width: 500px;
       }
 
       &__img {

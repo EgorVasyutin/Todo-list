@@ -3,28 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="style.css" />
   <script defer src="bundle.js"></script></head>
   <body>
-    <!--    <div class="modal">-->
-    <!--      <div class="modal-overlay">-->
-    <!--        <div class="modal-window">-->
-    <!--          <div class="modal-window__header">-->
-    <!--            <h2>This is a poll</h2>-->
-    <!--            <span class="modal__close">&times;</span>-->
-    <!--          </div>-->
-    <!--          <div class="modal-window__body">-->
-    <!--            <div class="modal__text">Hello, do you like our site</div>-->
-    <!--          </div>-->
-    <!--          <div class="modal-window__footer">-->
-    <!--            <button class="modal__button modal__button&#45;&#45;yes">Yes</button>-->
-    <!--            <button class="modal__button modal__button&#45;&#45;no">No</button>-->
-    <!--          </div>-->
-    <!--        </div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <script src="base.js"></script>
-    <script src="plugins/modal.js"></script>
-    <script src="main.js"></script>
+    <header class="header">
+      <div class="ellipse">
+        <img src="assets/img/person-icon.svg" class="header__img" alt="user" />
+      </div>
+      <div class="header__text">Egor Vasyutin</div>
+    </header>
+    <div class="body">
+      <div class="text__header">Мои задачи 2</div>
+      <div class="body__inputs">
+        <label>
+          <input placeholder="Напишите, что вы хотите сделать..." class="body__input" />
+        </label>
+        <button class="body__input-button">Создать</button>
+      </div>
+      <div class="todo">
+        <div class="todo__header">
+          <div class="title">Название</div>
+          <div class="action">Действие</div>
+        </div>
+        <div id="tasks" class="tasks"></div>
+      </div>
+    </div>
   </body>
 </html>

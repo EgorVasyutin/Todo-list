@@ -1,14 +1,19 @@
-@import "fonts.css";
-@import "componens/header";
-@import "componens/todo";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-*{
+@import 'fonts.scss';
+@import 'components/modal.scss';
+@import 'components/header.scss';
+@import 'components/todo.scss';
+
+* {
   margin: 0;
   padding: 0;
   border: none;
 }
 
-body{
+body {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -22,20 +27,19 @@ body{
     line-height: 37px;
     margin-bottom: 32px;
   }
-  &__inputs{
+  &__inputs {
     display: flex;
     align-items: center;
     gap: 16px;
     margin-bottom: 32px;
-
   }
   &__input {
     width: 499px;
     height: 44px;
-    background-color: #F3F3F3;
+    background-color: #f3f3f3;
     padding-left: 27px;
     border-radius: 8px;
-    font-family: "lato-regular", sans-serif;
+    font-family: 'lato-regular', sans-serif;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
@@ -43,7 +47,7 @@ body{
     &-button {
       width: 100px;
       height: 44px;
-      font-family: "lato-regular", sans-serif;
+      font-family: 'lato-regular', sans-serif;
       border-radius: 8px;
       font-weight: 400;
       font-size: 18px;
@@ -52,28 +56,3 @@ body{
     }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

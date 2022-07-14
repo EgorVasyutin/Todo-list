@@ -3,11 +3,29 @@
   <head>
     <meta charset="UTF-8" />
     <title>Title</title>
-    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <script src="base.js"></script>
-    <script src="plugins/modal.js"></script>
-    <script src="main.ts"></script>
+    <header class="header">
+      <div class="ellipse">
+        <img src="assets/img/person-icon.svg" class="header__img" alt="user" />
+      </div>
+      <div class="header__text">Egor Vasyutin</div>
+    </header>
+    <div class="body">
+      <div class="text__header">Мои задачи</div>
+      <div class="body__inputs">
+        <label>
+          <input placeholder="Напишите, что вы хотите сделать..." class="body__input" />
+        </label>
+        <button class="body__input-button">Создать</button>
+      </div>
+      <div class="todo">
+        <div class="todo__header">
+          <div class="title">Название</div>
+          <div class="action">Действие</div>
+        </div>
+        <div id="tasks" class="tasks"></div>
+      </div>
+    </div>
   </body>
 </html>
