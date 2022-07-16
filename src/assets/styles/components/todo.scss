@@ -9,7 +9,7 @@
       font-weight: 400;
       font-size: 14px;
       line-height: 17px;
-      margin-left: 50px;
+      margin-left: 22px;
     }
     .action {
       font-family: 'lato-regular', sans-serif;
@@ -24,6 +24,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: 40px;
 }
 
 .todo {
@@ -52,13 +53,13 @@
     margin-left: -2.5em;
   }
   &__checkbox:checked + .checkbox {
-    background-color: #4f46e5;
+    background-color: #3178c6;
     background-image: url('../img/check.svg');
     background-repeat: no-repeat;
     background-position: center;
   }
   &__checkbox:focus + .checkbox {
-    border: 2px solid #4f46e5;
+    border: 2px solid #3178c6;
   }
   .todo__text {
     font-family: 'lato-regular', sans-serif;
@@ -71,7 +72,6 @@
   &__actions {
     display: flex;
     gap: 12px;
-    margin-left: 20px;
     .edit {
       cursor: pointer;
     }
