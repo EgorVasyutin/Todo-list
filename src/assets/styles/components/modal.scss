@@ -1,4 +1,4 @@
-.modal {
+.dialog {
   &-overlay {
     position: fixed;
     top: 0;
@@ -7,7 +7,7 @@
     bottom: 0;
     background: rgb(0, 0, 0, 0);
     transition: backgraund 0.2s ease-in;
-    .modal-window {
+    .dialog-window {
       width: 500px;
       border-radius: 5px;
       background-color: #fff;
@@ -31,13 +31,13 @@
           font-size: 24px;
           margin: 0;
         }
-        .modal__close {
+        .dialog__close {
           color: black;
           cursor: pointer;
         }
       }
       &__body {
-        .modal__input {
+        .dialog__input {
           width: 420px;
           height: 44px;
           font-size: 16px;
@@ -48,7 +48,7 @@
           border: 1px solid black;
         }
 
-        .modal__text {
+        .dialog__text {
           font-size: 20px;
           padding-left: 24px;
           margin-bottom: 20px;
@@ -58,7 +58,7 @@
         display: flex;
         justify-content: flex-end;
         gap: 10px;
-        .modal__button {
+        .dialog__button {
           font-size: 16px;
           color: black;
           background-color: #808080;
@@ -78,35 +78,35 @@
     }
   }
 }
-.modal.open .modal-overlay,
-.modal.open .modal-window {
+.dialog.open .dialog-overlay,
+.dialog.open .dialog-window {
   z-index: 1000;
   opacity: 1;
 }
 
-.modal.hide .modal-overlay,
-.modal.hide .modal-window {
+.dialog.hide .dialog-overlay,
+.dialog.hide .dialog-window {
   z-index: 1000;
   opacity: 1;
 }
 
-.modal.open .modal-window {
+.dialog.open .dialog-window {
   transform: translateY(200px);
 }
 
-.modal-window,
-.modal-overlay {
+.dialog-window,
+.dialog-overlay {
   z-index: -1;
   opacity: 0;
 }
 
-.modal.hide .modal-window {
+.dialog.hide .dialog-window {
   transform: translateY(-200px);
 }
 
-.modal.hide .modal-overlay {
+.dialog.hide .dialog-overlay {
   background: rgb(0, 0, 0, 0);
 }
-.modal.open .modal-overlay {
+.dialog.open .dialog-overlay {
   background: rgb(0, 0, 0, 0.5);
 }

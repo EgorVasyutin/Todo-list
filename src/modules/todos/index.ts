@@ -1,10 +1,4 @@
-/* TODO:
- *   реализовать класс Todo
- *
- *
- * */
-
-import { Dialog, ModalOptions } from '../../plugins/dialog'
+import { DialogElement, DialogOptions } from '../../plugins/dialog'
 
 export type Todo = {
   title: string
@@ -15,24 +9,13 @@ export type Todo = {
 export type TodoElementOptions = {
   todo: Todo
   root: HTMLElement
-  dialog: Dialog
-}
-export const buttonListener = {
-  edit() {
-    const text: HTMLElement = document.querySelector('.task__text')
-    const input: HTMLInputElement = document.querySelector('.modal__input')
-    text.innerHTML = input['value']
-  },
-  delete() {
-    const task: HTMLElement = document.querySelector('.task')
-    task['style'].display = 'none'
-  }
+  dialog: DialogElement
 }
 
 export class TodoElement {
   private element: Element = null
   private root: HTMLElement = null
-  private dialog: Dialog = null
+  private dialog: DialogElement = null
   public title: string = null
 
   constructor(options: TodoElementOptions) {
@@ -41,66 +24,77 @@ export class TodoElement {
     this.addEventListeners()
     this.root.appendChild(this.element)
     this.dialog = options.dialog
+    this.title = options.todo.title
   }
 
-  private addEventListeners() {
+  addEventListenerButtonEdit() {
     const buttonEdit: HTMLButtonElement = this.element.querySelector('.edit')
     buttonEdit.addEventListener('click', () => {
-      const dialogOptionsEdit: ModalOptions = {
+      const dialogOptionsEdit: DialogOptions = {
         title: 'Изменение задачи',
         bodyHTML: `
-          <div class="modal__text">Редактировать задачу</div>
-          <input class='modal__input' value='${
-            this.element.querySelector('.task__text').innerHTML
+          <div class="dialog__text">Редактировать задачу</div>
+          <input class='dialog__input' value='${
+            this.element.querySelector('.todo__text').innerHTML
           }'/>
                   `,
         primaryButtonText: 'Редактировать',
         primaryButtonCallback: () => {
-          console.log(123)
-          const text: HTMLInputElement = document.querySelector('.modal__input')
-          this.title = text['value']
-          this.element.querySelector('.task__text').innerHTML = this.title
+          const input: HTMLInputElement = document.querySelector('.dialog__input')
+          this.title = input['value']
+          this.element.querySelector('.todo__text').innerHTML = this.title
         },
-        secondaryButtonText: 'Отмена'
+        secondaryButtonText: 'Отмена',
+        secondaryButtonCallback: () => {
+          this.dialog.close()
+        }
       }
       this.dialog.open(dialogOptionsEdit)
     })
+  }
+
+  addEventListenerButtonDelete() {
     const buttonDelete: HTMLButtonElement = this.element.querySelector('.delete')
     buttonDelete.addEventListener('click', () => {
       const dialogOptionsDelete = {
         title: 'Удаление задачи',
         bodyHTML: `
-        <div class="modal__text">Удалить задачу '${
-          document.querySelector('.task__text').innerHTML
-        }'</div>
-
+        <div class="dialog__text">Удалить задачу '${this.title}'</div>
       `,
         primaryButtonText: 'Удалить',
         primaryButtonCallback: () => {
           this.element.remove()
         },
-        secondaryButtonText: 'Отмена'
+        secondaryButtonText: 'Отмена',
+        secondaryButtonCallback: () => {
+          this.dialog.close()
+        }
       }
       this.dialog.open(dialogOptionsDelete)
     })
   }
 
-  createElement(options) {
+  private addEventListeners() {
+    this.addEventListenerButtonEdit()
+    this.addEventListenerButtonDelete()
+  }
+
+  createElement(todo: Todo) {
     const element = document.createElement('div')
-    element.className = 'task'
+    element.className = 'todo'
     element.insertAdjacentHTML(
       'afterbegin',
       `
             <label>    
-              <input type="checkbox" class="task__checkbox"  ${options.completed ? 'checked' : ''}/>
+              <input type="checkbox" class="todo__checkbox"  ${todo.completed ? 'checked' : ''}/>
               <div class='checkbox'></div>   
-              <div class="task__text">${options.title}</div>    
+              <div class="todo__text">${todo.title}</div>    
             </label>
-            <div class="task__img">
-              <img src="assets/img/pen.svg" alt="pen" class="edit" />
+            <div class="todo__actions">
+              <img src="assets/img/pen.svg" alt="edit" class="edit" />
               <img
                 src="assets/img/pannier.svg"
-                alt="pannier"
+                alt="delete"
                 class="delete"
               />
             </div>

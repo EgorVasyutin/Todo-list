@@ -1,4 +1,4 @@
-export type ModalOptions = {
+export type DialogOptions = {
   title: string
   bodyHTML: string
   primaryButtonText: string
@@ -6,34 +6,32 @@ export type ModalOptions = {
   secondaryButtonText?: string
   secondaryButtonCallback?: () => void
 }
-import { buttonListener } from '../modules/todos'
 
-export class Dialog {
+export class DialogElement {
   // fields
   private element: HTMLElement
   public isClosing: boolean
 
-  constructor(options?: ModalOptions) {
-    this.element = this.createElement(options)
+  constructor() {
+    this.element = this.createElement()
   }
 
   // methods
-  createElement(options: ModalOptions): HTMLElement {
-    const modalElement: HTMLElement = document.createElement('div')
-    modalElement.classList.add('modal')
+  createElement(): HTMLElement {
+    const dialogElement: HTMLElement = document.createElement('div')
+    dialogElement.classList.add('dialog')
+    document.body.appendChild(dialogElement)
 
-    document.body.appendChild(modalElement)
-    return modalElement
+    return dialogElement
   }
 
-  addEventListeners(options: ModalOptions) {
-    const buttonClose: HTMLButtonElement = this.element.querySelector('.modal__close')
+  addEventListeners(options: DialogOptions): void {
+    const buttonClose: HTMLButtonElement = this.element.querySelector('.dialog__close')
     buttonClose.addEventListener('click', this.close.bind(this))
 
     const buttonPrimary: HTMLButtonElement = this.element.querySelector('.primaryButtonText')
     buttonPrimary.addEventListener('click', () => {
       options.primaryButtonCallback()
-
       this.close()
     })
 
@@ -44,21 +42,21 @@ export class Dialog {
     })
   }
 
-  open(options: ModalOptions): void {
+  open(options: DialogOptions): void {
     if (!this.isClosing) {
       this.element.innerHTML = `
-              <div class="modal-overlay">
-                <div class="modal-window">
-                  <div class="modal-window__header">
+              <div class="dialog-overlay">
+                <div class="dialog-window">
+                  <div class="dialog-window__header">
                     <h2>${options.title}</h2>
-                    <span class="modal__close">&times;</span>   
+                    <span class="dialog__close">&times;</span>   
                   </div>
-                  <div class="modal-window__body">
+                  <div class="dialog-window__body">
                        ${options.bodyHTML}
                   </div>
-                  <div class="modal-window__footer">
-                    <button class="modal__button primaryButtonText">${options.primaryButtonText}</button>
-                    <button class="modal__button secondaryButtonText">${options.secondaryButtonText}</button>
+                  <div class="dialog-window__footer">
+                    <button class="dialog__button primaryButtonText">${options.primaryButtonText}</button>
+                    <button class="dialog__button secondaryButtonText">${options.secondaryButtonText}</button>
                   </div>
                 </div>
                </div>
