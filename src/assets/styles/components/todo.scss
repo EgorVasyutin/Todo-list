@@ -67,10 +67,10 @@
         display: flex;
         gap: 12px;
         margin-left: 20px;
-        &--pen {
+        .edit {
           cursor: pointer;
         }
-        &--pannier {
+        .delete {
           cursor: pointer;
         }
       }

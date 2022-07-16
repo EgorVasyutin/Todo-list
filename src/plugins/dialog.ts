@@ -2,7 +2,9 @@ export type ModalOptions = {
   title: string
   bodyHTML: string
   primaryButtonText: string
+  primaryButtonCallback: () => void
   secondaryButtonText?: string
+  secondaryButtonCallback?: () => void
 }
 import { buttonListener } from '../modules/todos'
 
@@ -11,9 +13,8 @@ export class Dialog {
   private element: HTMLElement
   public isClosing: boolean
 
-  constructor(options: ModalOptions) {
+  constructor(options?: ModalOptions) {
     this.element = this.createElement(options)
-    this.addEventListeners()
   }
 
   // methods
@@ -21,56 +22,48 @@ export class Dialog {
     const modalElement: HTMLElement = document.createElement('div')
     modalElement.classList.add('modal')
 
-    // HTML
-    modalElement.insertAdjacentHTML(
-      'afterbegin',
-      `
-      <div class="modal-overlay">
-        <div class="modal-window">
-          <div class="modal-window__header">
-            <h2>${options.title}</h2>
-            <span class="modal__close">&times;</span>   
-          </div>
-          <div class="modal-window__body">
-               ${options.bodyHTML}
-          </div>
-          <div class="modal-window__footer">
-            <button class="modal__button modal__button--yes">${options.primaryButtonText}</button>
-            <button class="modal__button modal__button--no">${options.secondaryButtonText}</button>
-          </div>
-        </div>
-      </div>
-    `
-    )
     document.body.appendChild(modalElement)
-
     return modalElement
   }
 
-  addEventListeners() {
+  addEventListeners(options: ModalOptions) {
     const buttonClose: HTMLButtonElement = this.element.querySelector('.modal__close')
     buttonClose.addEventListener('click', this.close.bind(this))
 
-    const buttonPrimary: HTMLButtonElement = this.element.querySelector('.modal__button--yes')
+    const buttonPrimary: HTMLButtonElement = this.element.querySelector('.primaryButtonText')
     buttonPrimary.addEventListener('click', () => {
-      if (document.querySelector('.modal__text').innerHTML === 'Редактировать задачу') {
-        buttonListener.Edit()
-      } else {
-        buttonListener.Delete()
-      }
+      options.primaryButtonCallback()
+
       this.close()
     })
 
-    const buttonSecondary: HTMLButtonElement = this.element.querySelector('.modal__button--no')
+    const buttonSecondary: HTMLButtonElement = this.element.querySelector('.secondaryButtonText')
     buttonSecondary.addEventListener('click', () => {
+      options.secondaryButtonCallback()
       this.close()
     })
   }
 
-  open(): void {
-    console.log('this', this)
-
+  open(options: ModalOptions): void {
     if (!this.isClosing) {
+      this.element.innerHTML = `
+              <div class="modal-overlay">
+                <div class="modal-window">
+                  <div class="modal-window__header">
+                    <h2>${options.title}</h2>
+                    <span class="modal__close">&times;</span>   
+                  </div>
+                  <div class="modal-window__body">
+                       ${options.bodyHTML}
+                  </div>
+                  <div class="modal-window__footer">
+                    <button class="modal__button primaryButtonText">${options.primaryButtonText}</button>
+                    <button class="modal__button secondaryButtonText">${options.secondaryButtonText}</button>
+                  </div>
+                </div>
+               </div>
+             `
+      this.addEventListeners(options)
       this.element.classList.add('open')
     }
   }
@@ -78,7 +71,6 @@ export class Dialog {
   close(): void {
     this.isClosing = true
 
-    console.log('this', this)
     this.element.classList.remove('open')
     this.element.classList.add('hide')
 
@@ -89,7 +81,6 @@ export class Dialog {
   }
 
   destroy() {
-    // Удаляет элемент диалогового окна из DOM, удаляет eventListeners
     this.element.remove()
   }
 }
