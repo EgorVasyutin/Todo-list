@@ -49,7 +49,7 @@ export class DialogElement {
                 <div class="dialog-window">
                   <div class="dialog-window__header">
                     <h2>${options.title}</h2>
-                    <span class="dialog__close">&times;</span>   
+                    <img src="assets/img/close.svg" class="dialog__close" alt='close'/>
                   </div>
                   <div class="dialog-window__body">
                        ${options.bodyHTML}
