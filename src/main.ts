@@ -7,9 +7,11 @@ const dialog = new DialogElement()
 const tasks: HTMLElement = document.querySelector('.todo-list')
 
 let todos: Todo[] = null
-fetch('https://jsonplaceholder.typicode.com/todos')
+fetch('http://localhost:1000/api/todo')
   .then((response) => response.json())
-  .then((json) => (todos = json.slice(0, 10)))
+  .then((data) => {
+    todos = data
+  })
   .then(() => {
     todos.forEach((todo: Todo) => {
       const todoElementOptions: TodoElementOptions = {
@@ -26,17 +28,26 @@ const createTodoInput: HTMLInputElement = document.querySelector('.create-todo__
 
 createTodoButton.addEventListener('click', () => {
   if (createTodoInput['value'].length > 0) {
-    const todoElementOptions: TodoElementOptions = {
-      todo: {
+    fetch('http://localhost:1000/api/todo', {
+      method: 'POST',
+      body: JSON.stringify({
         title: createTodoInput['value'],
-        completed: false,
-        id: Date.now(),
-        userId: 1
-      },
-      root: tasks,
-      dialog
-    }
-    new TodoElement(todoElementOptions)
-    createTodoInput['value'] = ''
+        isDone: false
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => response.json())
+      .then((createdTodo: Todo) => {
+        const todoElementOptions: TodoElementOptions = {
+          todo: createdTodo,
+          root: tasks,
+          dialog
+        }
+
+        new TodoElement(todoElementOptions)
+        createTodoInput['value'] = ''
+      })
   }
 })

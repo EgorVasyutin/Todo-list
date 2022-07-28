@@ -2,9 +2,9 @@ import { DialogElement, DialogOptions } from '../../plugins/dialog'
 
 export type Todo = {
   title: string
-  completed: boolean
+  isDone: boolean
   id: number
-  userId: number
+  userId?: number
 }
 export type TodoElementOptions = {
   todo: Todo
@@ -17,6 +17,8 @@ export class TodoElement {
   private root: HTMLElement = null
   private dialog: DialogElement = null
   public title: string = null
+  public id: number = null
+  public isDone: boolean = null
 
   constructor(options: TodoElementOptions) {
     this.root = options.root
@@ -25,6 +27,8 @@ export class TodoElement {
     this.root.appendChild(this.element)
     this.dialog = options.dialog
     this.title = options.todo.title
+    this.id = options.todo.id
+    this.isDone = options.todo.isDone
   }
 
   addEventListenerButtonEdit() {
@@ -42,6 +46,17 @@ export class TodoElement {
         primaryButtonCallback: () => {
           const input: HTMLInputElement = document.querySelector('.dialog__input')
           this.title = input['value']
+          const body = JSON.stringify({
+            title: this.title,
+            isDone: this.isDone
+          })
+          fetch(`http://localhost:1000/api/todo/${this.id}`, {
+            method: 'PUT',
+            body: body,
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          }).then((response) => response.json())
           this.element.querySelector('.todo__text').innerHTML = this.title
         },
         secondaryButtonText: 'Отмена',
@@ -63,7 +78,12 @@ export class TodoElement {
       `,
         primaryButtonText: 'Удалить',
         primaryButtonCallback: () => {
-          this.element.remove()
+          // async function request(method, id) {
+          fetch(`http://localhost:1000/api/todo/${this.id}`, {
+            method: 'DELETE'
+          }).then(() => this.element.remove())
+          //}
+          // await request('DELETE', this.userId)
         },
         secondaryButtonText: 'Отмена',
         secondaryButtonCallback: () => {
@@ -74,9 +94,34 @@ export class TodoElement {
     })
   }
 
+  addEventListenerButtonIsDone() {
+    const buttonIsDone: HTMLInputElement = this.element.querySelector('.todo__checkbox')
+    buttonIsDone.addEventListener('click', () => {
+      if (buttonIsDone.checked) {
+        this.isDone = true
+      } else {
+        this.isDone = false
+      }
+
+      console.log(this.isDone)
+      const body = JSON.stringify({
+        title: this.title,
+        isDone: this.isDone
+      })
+      fetch(`http://localhost:1000/api/todo/${this.id}`, {
+        method: 'PUT',
+        body: body,
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }).then((response) => response.json())
+    })
+  }
+
   private addEventListeners() {
     this.addEventListenerButtonEdit()
     this.addEventListenerButtonDelete()
+    this.addEventListenerButtonIsDone()
   }
 
   createElement(todo: Todo) {
@@ -86,7 +131,7 @@ export class TodoElement {
       'afterbegin',
       `
             <label>    
-              <input type="checkbox" class="todo__checkbox"  ${todo.completed ? 'checked' : ''}/>
+              <input type="checkbox" class="todo__checkbox"  ${todo.isDone ? 'checked' : ''}/>
               <div class='checkbox'></div>   
               <div class="todo__text">${todo.title}</div>    
             </label>
