@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>registration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto-bold:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto-reg&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        border: none;
+      }
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .reg-content {
+        display: flex;
+        flex-direction: column;
+      }
+      .reg-content__text {
+        font-family: 'Roboto-bold', sans-serif;
+        font-size: 34px;
+        margin-top: 200px;
+        margin-bottom: 40px;
+      }
+      .reg__text {
+        font-size: 20px;
+        font-family: 'Roboto-reg', sans-serif;
+        padding-bottom: 10px;
+      }
+      .reg__input {
+        width: 400px;
+        height: 50px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        padding-left: 10px;
+        font-family: 'Roboto-reg', sans-serif;
+        font-size: 20px;
+      }
+      .button__registration {
+        width: 200px;
+        height: 40px;
+        background-color: #0058fd;
+        color: white;
+        font-size: 16px;
+        font-family: 'Roboto-reg', sans-serif;
+        border-radius: 10px;
+        cursor: pointer;
+      }
+      .reg-content__person {
+        margin-bottom: 50px;
+      }
+    </style>
+    <div class="reg-content">
+      <h2 class="reg-content__text">Авторизация</h2>
+      <div class="reg-content__person">
+        <h3 class="reg__text">Имя</h3>
+        <label>
+          <input class="reg__input" />
+        </label>
+        <h3 class="reg__text password__text">Фамилия</h3>
+        <label>
+          <input class="reg__input" />
+        </label>
+      </div>
+      <div class="reg-content__email">
+        <h3 class="reg__text email__text">Почта</h3>
+        <label>
+          <input type="email" class="email__input reg__input" />
+        </label>
+      </div>
+      <div class="reg-content__password">
+        <h3 class="reg__text email__text">Пароль</h3>
+        <label>
+          <input type="password" class="reg__input password__input password-1" />
+        </label>
+        <h3 class="reg__text password__text">Повтор пароля</h3>
+        <label>
+          <input type="password" class="reg__input password__input password-2" />
+        </label>
+      </div>
+
+      <button class="button__registration">Авторизоваться</button>
+    </div>
+  </body>
+</html>

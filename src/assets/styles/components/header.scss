@@ -25,3 +25,42 @@
     line-height: 22px;
   }
 }
+
+.reg-log__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  top: 25px;
+  right: 50px;
+
+  .login {
+    width: 100px;
+    height: 40px;
+    border-radius: 12px;
+    background-color: #3178c6;
+    color: white;
+    font-family: 'lato-regular', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .register {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 40px;
+    border-radius: 12px;
+    background-color: white;
+    color: slategray;
+    font-family: 'lato-regular', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+  }
+}
